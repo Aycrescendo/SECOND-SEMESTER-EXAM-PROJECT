@@ -2,11 +2,13 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useTodo } from "@/features/tasks/hooks";
 import TodoDetails from "@/features/tasks/TodoDetails";
 
-export default function TodoDetailspage() {
+export default function TodoDetailsPage() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data, isLoading, isError } = useTodo(id);
+  const todoId = Number(id);
+
+  const { data, isLoading, isError } = useTodo(todoId);
 
   if (isLoading) {
     return (
